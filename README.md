@@ -16,7 +16,7 @@ MyNotifierImpl.getNotifier().registerObserver("Chinese", new EventObserver() {
 ```
 - 按value分发消息
 ```java
-MyNotifierImpl.getNotifier().notify("Chinese", "你好");
+MyNotifierImpl.getNotifier().notify("Chinese", "hello");
 ```
 
 ### LICENSE
