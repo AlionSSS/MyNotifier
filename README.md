@@ -1,5 +1,5 @@
 # MyNotify
-一个简易的消息分发机制 [Download](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
+一个简易的消息分发订阅机制工具 [Download](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
 
 ### What you need to know?
 1. 单例设计模式
