@@ -1,4 +1,4 @@
-# MyNotify
+# MyNotifier
 一个简易的消息分发订阅机制工具 
 
 ### Download
