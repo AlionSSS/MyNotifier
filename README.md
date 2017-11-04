@@ -1,10 +1,8 @@
 # MyNotify
-一个简易的消息分发订阅机制工具 [Download](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
+一个简易的消息分发订阅机制工具 
 
-### What you need to know?
-1. 单例设计模式
-2. 观察者设计模式
-3. 熟悉HashMap、HashSet、Interface
+### Download
+[Click Me](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
 
 ### How to use?
 - 按value注册观察者
