@@ -1,5 +1,5 @@
 # MyNotify
-一个简易的消息分发机制
+一个简易的消息分发机制 [Download](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
 
 ### What you need to know?
 1. 单例设计模式
@@ -35,4 +35,5 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limi
+limitations under the License.
+```
