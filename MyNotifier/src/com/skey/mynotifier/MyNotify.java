@@ -95,13 +95,9 @@ public class MyNotify implements MyNotifier {
     public void notify(String value, Object info) {
         checkValue(value);
 
-        for (Map.Entry<String, HashSet<EventObserver>> entry : mObservers.entrySet()) {
-            if (value.equals(entry.getKey())) {
-                for (EventObserver observer : entry.getValue()) {
-                    observer.onEvent(info);
-                }
-                break;
-            }
+        HashSet<EventObserver> set = mObservers.get(value);
+        for (EventObserver observer : set) {
+            observer.onEvent(info);
         }
     }
 
