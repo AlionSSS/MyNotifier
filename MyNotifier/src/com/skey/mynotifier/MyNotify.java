@@ -11,15 +11,15 @@ import java.util.Map;
  * @version 2017/6/21 18:29
  */
 
-public class MyNotifierImpl implements MyNotifier {
+public class MyNotify implements MyNotifier {
 
-    private static final MyNotifier mInstance = new MyNotifierImpl();
+    private static final MyNotifier mInstance = new MyNotify();
 
     public static MyNotifier getNotifier() {
         return mInstance;
     }
 
-    private MyNotifierImpl() {
+    private MyNotify() {
     }
 
     /**

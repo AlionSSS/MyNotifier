@@ -2,7 +2,7 @@ package com.skey.test;
 
 import com.skey.mynotifier.EventObserver;
 import com.skey.mynotifier.MyNotifier;
-import com.skey.mynotifier.MyNotifierImpl;
+import com.skey.mynotifier.MyNotify;
 
 /**
  * MainTest
@@ -13,7 +13,7 @@ import com.skey.mynotifier.MyNotifierImpl;
 public class MainTest {
 
     public static void main(String[] args) {
-        MyNotifier notifier = MyNotifierImpl.getNotifier();
+        MyNotifier notifier = MyNotify.getNotifier();
         notifier.registerObserver("China", new EventObserver() {
             @Override
             public void onEvent(Object info) {
@@ -38,7 +38,7 @@ public class MainTest {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    MyNotifier notifier = MyNotifierImpl.getNotifier();
+                    MyNotifier notifier = MyNotify.getNotifier();
                     notifier.notify("China", "你好1");
 
                     Thread.sleep(3000);
@@ -62,7 +62,7 @@ public class MainTest {
 
                 if (i == 20) {
                     System.out.println("注销掉China");
-                    MyNotifierImpl.getNotifier().unRegisterObserver("China");
+                    MyNotify.getNotifier().unRegisterObserver("China");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
