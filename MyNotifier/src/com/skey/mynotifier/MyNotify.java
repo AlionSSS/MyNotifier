@@ -13,10 +13,12 @@ import java.util.Map;
 
 public class MyNotify implements MyNotifier {
 
-    private static final MyNotifier mInstance = new MyNotify();
+    private static class Inner {
+        private static MyNotifier instance = new MyNotify();
+    }
 
     public static MyNotifier getNotifier() {
-        return mInstance;
+        return Inner.instance;
     }
 
     private MyNotify() {
@@ -24,27 +26,27 @@ public class MyNotify implements MyNotifier {
 
     /**
      * 观察者集合
-     * 注: value的String类型可以根据个人喜好修改为Integer
+     * 注: key的String类型可以根据个人喜好修改为Integer
      */
     private static HashMap<String, HashSet<EventObserver>> mObservers = new HashMap<>();
 
     /**
      * 注册观察者
      *
-     * @param value    用于标识observer，不能为null
+     * @param key    用于标识observer，不能为null
      * @param observer 注册对应的observer接口，不能为null
      */
     @Override
-    public void registerObserver(String value, EventObserver observer) {
+    public void registerObserver(String key, EventObserver observer) {
         checkObserver(observer);
-        checkValue(value);
+        checkKey(key);
 
-        HashSet<EventObserver> set = mObservers.get(value);
+        HashSet<EventObserver> set = mObservers.get(key);
         if (set == null) {
             set = new HashSet<>();
         }
         set.add(observer);
-        mObservers.put(value, set);
+        mObservers.put(key, set);
     }
 
     /**
@@ -68,13 +70,13 @@ public class MyNotify implements MyNotifier {
     /**
      * 注销观察者
      *
-     * @param value 按value值注销，不能为null
+     * @param key 按key值注销，不能为null
      */
     @Override
-    public void unRegisterObserver(String value) {
-        checkValue(value);
+    public void unRegisterObserver(String key) {
+        checkKey(key);
 
-        mObservers.remove(value);
+        mObservers.remove(key);
     }
 
     /**
@@ -88,16 +90,18 @@ public class MyNotify implements MyNotifier {
     /**
      * 按value通知发生变化
      *
-     * @param value 按value值通知对应的observer，不能为null
+     * @param key 按key值通知对应的observer，不能为null
      * @param info  传递的信息
      */
     @Override
-    public void notify(String value, Object info) {
-        checkValue(value);
+    public void notify(String key, Object info) {
+        checkKey(key);
 
-        HashSet<EventObserver> set = mObservers.get(value);
-        for (EventObserver observer : set) {
-            observer.onEvent(info);
+        if (mObservers.containsKey(key)) {
+            HashSet<EventObserver> set = mObservers.get(key);
+            for (EventObserver observer : set) {
+                observer.onEvent(info);
+            }
         }
     }
 
@@ -121,9 +125,9 @@ public class MyNotify implements MyNotifier {
         }
     }
 
-    private void checkValue(String value) {
-        if (value == null) {
-            throw new IllegalArgumentException("value should not be null!");
+    private void checkKey(String key) {
+        if (key == null) {
+            throw new IllegalArgumentException("key should not be null!");
         }
     }
 }

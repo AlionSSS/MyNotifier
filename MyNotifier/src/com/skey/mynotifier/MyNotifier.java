@@ -11,10 +11,10 @@ public interface MyNotifier {
     /**
      * 注册观察者
      *
-     * @param value    用于标识observer，不能为null
+     * @param key    用于标识observer，不能为null
      * @param observer 注册对应的observer接口，不能为null
      */
-    void registerObserver(String value, EventObserver observer);
+    void registerObserver(String key, EventObserver observer);
 
     /**
      * 注销观察者
@@ -26,9 +26,9 @@ public interface MyNotifier {
     /**
      * 注销观察者
      *
-     * @param value 按value值注销，不能为null
+     * @param key 按key值注销，不能为null
      */
-    void unRegisterObserver(String value);
+    void unRegisterObserver(String key);
 
     /**
      * 注销所有观察者
@@ -36,12 +36,12 @@ public interface MyNotifier {
     void unRegisterAll();
 
     /**
-     * 按value通知发生变化
+     * 按key通知发生变化
      *
-     * @param value 按value值通知对应的observer，不能为null
+     * @param key 按key值通知对应的observer，不能为null
      * @param info  传递的信息
      */
-    void notify(String value, Object info);
+    void notify(String key, Object info);
 
     /**
      * 通知所有observer
