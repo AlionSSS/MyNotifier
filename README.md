@@ -1,5 +1,5 @@
 # MyNotifier
-一个简易的消息分发订阅机制工具 
+一个简易的分发/订阅消息机制工具
 
 ### Download
 [Click Me (´･ω･`)](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
