@@ -22,13 +22,14 @@ public class MyNotify implements MyNotifier {
     }
 
     private MyNotify() {
+        mObservers = new HashMap<>();
     }
 
     /**
      * 观察者集合
      * 注: key的String类型可以根据个人喜好修改为Integer
      */
-    private static HashMap<String, HashSet<EventObserver>> mObservers = new HashMap<>();
+    private static HashMap<String, HashSet<EventObserver>> mObservers;
 
     /**
      * 注册观察者
