@@ -10,7 +10,7 @@
 MyNotify.getNotifier().registerObserver("Chinese", new EventObserver() {
             @Override
             public void onEvent(Object info) {
-                System.out.println("info = " info);
+                System.out.println("info = " + info);
             }
         });
 ```
