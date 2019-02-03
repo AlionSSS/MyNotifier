@@ -53,8 +53,7 @@ public class Notify implements MyNotifier {
 
         for (Map.Entry<String, HashSet<EventObserver>> entry : mObservers.entrySet()) {
             HashSet<EventObserver> set = entry.getValue();
-            if (set.contains(observer)) {
-                set.remove(observer);
+            if (set.remove(observer)) {
                 break;
             }
         }
@@ -76,9 +75,9 @@ public class Notify implements MyNotifier {
     public void post(String key, Object info) {
         checkKey(key);
 
-        if (mObservers.containsKey(key)) {
-            HashSet<EventObserver> set = mObservers.get(key);
-            for (EventObserver observer : set) {
+        HashSet<EventObserver> observers = mObservers.get(key);
+        if (observers != null) {
+            for (EventObserver observer : observers) {
                 observer.onEvent(info);
             }
         }
