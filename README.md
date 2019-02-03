@@ -2,7 +2,7 @@
 一个简易的订阅/分发消息的工具
 
 ### Download
-[Click Me (´･ω･`)](https://raw.githubusercontent.com/AlionSSS/MyNotifier/master/src/lib/MyNotifier.jar)
+[Click Me (´･ω･`)](https://github.com/AlionSSS/MyNotifier/releases/download/1.0.0/MyNotifier.jar)
 
 ### How to use?
 - 按value注册观察者
