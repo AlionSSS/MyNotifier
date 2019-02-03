@@ -3,6 +3,7 @@ package com.skey.mynotifier;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 消息 订阅/分发 具体实现类
@@ -25,14 +26,14 @@ public class Notify implements MyNotifier {
     }
 
     private Notify() {
-        mObservers = new HashMap<>();
+        mObservers = new ConcurrentHashMap<>();
     }
 
     /**
      * 观察者集合
      * 注: key的String类型可以根据个人喜好修改为Integer
      */
-    private static HashMap<String, HashSet<EventObserver>> mObservers;
+    private static Map<String, HashSet<EventObserver>> mObservers;
 
     @Override
     public void subscribe(String key, EventObserver observer) {
