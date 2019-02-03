@@ -7,7 +7,7 @@
 ### How to use?
 - 按value注册观察者
 ```java
-MyNotify.getNotifier().registerObserver("Chinese", new EventObserver() {
+Notify.getNotifier().subscribe("Chinese", new EventObserver() {
             @Override
             public void onEvent(Object info) {
                 System.out.println("info = " + info);
@@ -16,7 +16,7 @@ MyNotify.getNotifier().registerObserver("Chinese", new EventObserver() {
 ```
 - 按value分发消息
 ```java
-MyNotify.getNotifier().notify("Chinese", "hello");
+Notify.getNotifier().post("Chinese", "hello");
 ```
 
 ### LICENSE

@@ -6,22 +6,25 @@ import java.util.Map;
 
 /**
  * 消息分发 具体实现类
- *
+ * <p>
+ *     1.单例设计模式（静态内部类）
+ *     2.观察者设计模式
+ * </p>
  * @author ALion
  * @version 2017/6/21 18:29
  */
 
-public class MyNotify implements MyNotifier {
+public class Notify implements MyNotifier {
 
     private static class Inner {
-        private static MyNotifier instance = new MyNotify();
+        private static final MyNotifier INSTANCE = new Notify();
     }
 
     public static MyNotifier getNotifier() {
-        return Inner.instance;
+        return Inner.INSTANCE;
     }
 
-    private MyNotify() {
+    private Notify() {
         mObservers = new HashMap<>();
     }
 
@@ -31,14 +34,8 @@ public class MyNotify implements MyNotifier {
      */
     private static HashMap<String, HashSet<EventObserver>> mObservers;
 
-    /**
-     * 注册观察者
-     *
-     * @param key    用于标识observer，不能为null
-     * @param observer 注册对应的observer接口，不能为null
-     */
     @Override
-    public void registerObserver(String key, EventObserver observer) {
+    public void subscribe(String key, EventObserver observer) {
         checkObserver(observer);
         checkKey(key);
 
@@ -50,13 +47,8 @@ public class MyNotify implements MyNotifier {
         mObservers.put(key, set);
     }
 
-    /**
-     * 注销观察者
-     *
-     * @param observer 注销对应的observer接口，不能为null
-     */
     @Override
-    public void unRegisterObserver(EventObserver observer) {
+    public void unSubscribe(EventObserver observer) {
         checkObserver(observer);
 
         for (Map.Entry<String, HashSet<EventObserver>> entry : mObservers.entrySet()) {
@@ -68,34 +60,20 @@ public class MyNotify implements MyNotifier {
         }
     }
 
-    /**
-     * 注销观察者
-     *
-     * @param key 按key值注销，不能为null
-     */
     @Override
-    public void unRegisterObserver(String key) {
+    public void unSubscribe(String key) {
         checkKey(key);
 
         mObservers.remove(key);
     }
 
-    /**
-     * 注销所有观察者
-     */
     @Override
     public void unRegisterAll() {
         mObservers.clear();
     }
 
-    /**
-     * 按value通知发生变化
-     *
-     * @param key 按key值通知对应的observer，不能为null
-     * @param info  传递的信息
-     */
     @Override
-    public void notify(String key, Object info) {
+    public void post(String key, Object info) {
         checkKey(key);
 
         if (mObservers.containsKey(key)) {
@@ -106,13 +84,8 @@ public class MyNotify implements MyNotifier {
         }
     }
 
-    /**
-     * 通知所有observer
-     *
-     * @param info 传递的信息
-     */
     @Override
-    public void notifyAll(Object info) {
+    public void postAll(Object info) {
         for (Map.Entry<String, HashSet<EventObserver>> entry : mObservers.entrySet()) {
             for (EventObserver observer : entry.getValue()) {
                 observer.onEvent(info);

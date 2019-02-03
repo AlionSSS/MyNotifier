@@ -1,8 +1,6 @@
-package com.skey.test;
-
 import com.skey.mynotifier.EventObserver;
 import com.skey.mynotifier.MyNotifier;
-import com.skey.mynotifier.MyNotify;
+import com.skey.mynotifier.Notify;
 
 /**
  * MainTest
@@ -13,20 +11,20 @@ import com.skey.mynotifier.MyNotify;
 public class MainTest {
 
     public static void main(String[] args) {
-        MyNotifier notifier = MyNotify.getNotifier();
-        notifier.registerObserver("China", new EventObserver() {
+        MyNotifier notifier = Notify.getNotifier();
+        notifier.subscribe("China", new EventObserver() {
             @Override
             public void onEvent(Object info) {
                 System.out.println("info = " + info);
             }
         });
-        notifier.registerObserver("China", new EventObserver() {
+        notifier.subscribe("China", new EventObserver() {
             @Override
             public void onEvent(Object info) {
                 System.out.println("info = " + info);
             }
         });
-        notifier.registerObserver("American", new EventObserver() {
+        notifier.subscribe("American", new EventObserver() {
             @Override
             public void onEvent(Object info) {
                 System.out.println("info = " + info);
@@ -38,15 +36,15 @@ public class MainTest {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    MyNotifier notifier = MyNotify.getNotifier();
-                    notifier.notify("China", "你好1");
+                    MyNotifier notifier = Notify.getNotifier();
+                    notifier.post("China", "你好1");
 
                     Thread.sleep(3000);
-                    notifier.notify("American", "hello");
+                    notifier.post("American", "hello");
 
                     Thread.sleep(10000);
-                    notifier.notify("China", "你好2");
-                    notifier.notify("American", "hello2");
+                    notifier.post("China", "你好2");
+                    notifier.post("American", "hello2");
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -62,7 +60,7 @@ public class MainTest {
 
                 if (i == 20) {
                     System.out.println("注销掉China");
-                    MyNotify.getNotifier().unRegisterObserver("China");
+                    Notify.getNotifier().unSubscribe("China");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
