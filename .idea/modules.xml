@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyNotifier/MyNotifier.iml" filepath="$PROJECT_DIR$/MyNotifier/MyNotifier.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyNotifierModule/MyNotifier.iml" filepath="$PROJECT_DIR$/MyNotifierModule/MyNotifier.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MyNotify.iml" filepath="$PROJECT_DIR$/MyNotify.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyNotifier.iml" filepath="$PROJECT_DIR$/MyNotifier.iml" />
     </modules>
   </component>
 </project>
