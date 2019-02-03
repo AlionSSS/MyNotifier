@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 
 /**
- * 消息分发 具体实现类
+ * 消息 订阅/分发 具体实现类
  * <p>
  *     1.单例设计模式（静态内部类）
  *     2.观察者设计模式

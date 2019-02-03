@@ -1,7 +1,7 @@
 package com.skey.mynotifier;
 
 /**
- * Notifier 功能接口
+ * 订阅/分发 功能接口
  *
  * @author ALion
  * @version 2017/7/13 1:29
