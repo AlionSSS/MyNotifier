@@ -5,7 +5,7 @@
 [Click Me (´･ω･`)](https://github.com/AlionSSS/MyNotifier/releases/download/1.0.0/MyNotifier.jar)
 
 ### How to use?
-- 按value注册观察者
+- 按key订阅消息
 ```java
 Notify.getNotifier().subscribe("Chinese", new EventObserver() {
             @Override
@@ -14,7 +14,7 @@ Notify.getNotifier().subscribe("Chinese", new EventObserver() {
             }
         });
 ```
-- 按value分发消息
+- 按key分发消息
 ```java
 Notify.getNotifier().post("Chinese", "hello");
 ```
