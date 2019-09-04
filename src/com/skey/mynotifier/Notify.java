@@ -36,8 +36,8 @@ public class Notify implements MyNotifier {
 
     @Override
     public void subscribe(String topic, EventObserver observer) {
-        checkObserver(observer);
         checkKey(topic);
+        checkObserver(observer);
 
         HashSet<EventObserver> set = mObservers.get(topic);
         if (set == null) {

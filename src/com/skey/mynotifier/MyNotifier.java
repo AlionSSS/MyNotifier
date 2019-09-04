@@ -11,10 +11,10 @@ public interface MyNotifier {
     /**
      * 订阅-注册观察者
      *
-     * @param key    用于标识observer，不能为null
+     * @param topic    用于标识observer，不能为null
      * @param observer 注册对应的observer接口，不能为null
      */
-    void subscribe(String key, EventObserver observer);
+    void subscribe(String topic, EventObserver observer);
 
     /**
      * 取消订阅-注销观察者
@@ -26,9 +26,9 @@ public interface MyNotifier {
     /**
      * 取消订阅-注销观察者
      *
-     * @param key 按key值注销，不能为null
+     * @param topic 按key值注销，不能为null
      */
-    void unSubscribe(String key);
+    void unSubscribe(String topic);
 
     /**
      * 取消订阅-注销所有观察者
@@ -38,10 +38,10 @@ public interface MyNotifier {
     /**
      * 分发-按key分发
      *
-     * @param key 按key值通知对应的observer，不能为null
+     * @param topic 按key值通知对应的observer，不能为null
      * @param info  传递的信息
      */
-    void post(String key, Object info);
+    void post(String topic, Object info);
 
     /**
      * 分发-所有observer
