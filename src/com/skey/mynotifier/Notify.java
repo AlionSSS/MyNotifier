@@ -16,6 +16,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Notify implements MyNotifier {
 
+    /**
+     * 观察者集合
+     * 注: key的String类型可以根据个人喜好修改为Integer
+     */
+    private static Map<String, HashSet<EventObserver>> mObservers;
+
     private static class Inner {
         private static final MyNotifier INSTANCE = new Notify();
     }
@@ -28,23 +34,17 @@ public class Notify implements MyNotifier {
         mObservers = new ConcurrentHashMap<>();
     }
 
-    /**
-     * 观察者集合
-     * 注: key的String类型可以根据个人喜好修改为Integer
-     */
-    private static Map<String, HashSet<EventObserver>> mObservers;
-
     @Override
-    public void subscribe(String key, EventObserver observer) {
+    public void subscribe(String topic, EventObserver observer) {
         checkObserver(observer);
-        checkKey(key);
+        checkKey(topic);
 
-        HashSet<EventObserver> set = mObservers.get(key);
+        HashSet<EventObserver> set = mObservers.get(topic);
         if (set == null) {
             set = new HashSet<>();
         }
         set.add(observer);
-        mObservers.put(key, set);
+        mObservers.put(topic, set);
     }
 
     @Override
@@ -60,10 +60,10 @@ public class Notify implements MyNotifier {
     }
 
     @Override
-    public void unSubscribe(String key) {
-        checkKey(key);
+    public void unSubscribe(String topic) {
+        checkKey(topic);
 
-        mObservers.remove(key);
+        mObservers.remove(topic);
     }
 
     @Override
@@ -72,10 +72,10 @@ public class Notify implements MyNotifier {
     }
 
     @Override
-    public void post(String key, Object info) {
-        checkKey(key);
+    public void post(String topic, Object info) {
+        checkKey(topic);
 
-        HashSet<EventObserver> observers = mObservers.get(key);
+        HashSet<EventObserver> observers = mObservers.get(topic);
         if (observers != null) {
             for (EventObserver observer : observers) {
                 observer.onEvent(info);
