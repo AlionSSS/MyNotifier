@@ -2,17 +2,17 @@
 一个简易的订阅/分发消息的工具
 
 ### Download
-[Click Me (´･ω･`)](https://github.com/AlionSSS/MyNotifier/releases/download/1.0.0/MyNotifier.jar)
+[Click Me (´･ω･`)](https://github.com/AlionSSS/MyNotifier/releases/download/1.0.1/MyNotifier.jar)
 
 ### How to use?
 - 按key订阅消息
 ```java
 Notify.getNotifier().subscribe("Chinese", new EventObserver() {
-            @Override
-            public void onEvent(Object info) {
-                System.out.println("info = " + info);
-            }
-        });
+    @Override
+    public void onEvent(Object info) {
+        System.out.println("info = " + info);
+    }
+});
 ```
 - 按key分发消息
 ```java

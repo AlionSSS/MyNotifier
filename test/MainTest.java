@@ -12,7 +12,7 @@ public class MainTest {
 
     public static void main(String[] args) {
         MyNotifier notifier = Notify.getNotifier();
-        notifier.subscribe(null, new EventObserver() {
+        notifier.subscribe("China", new EventObserver() {
             @Override
             public void onEvent(Object info) {
                 System.out.println("info = " + info);
